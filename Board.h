@@ -42,7 +42,7 @@ class xo{
     
     public:
         
-        char getChar(){
+        char getChar() const{
             return x;
         }
         
@@ -56,6 +56,11 @@ class xo{
                 throw IllegalCharException(c);
             }
             return x;
+        }
+        
+        xo& operator= (const xo _xo){
+            x = _xo.getChar();
+            return *this;
         }
         
         friend std::ostream& operator<<(std::ostream& os, xo  &b);
@@ -74,19 +79,19 @@ class Board{
     
     private:
         
-
         coord _coord;
-
     	xo** board;
     	int size;
 	
     public:
-
-        Board(int v);	
+        Board();
+        Board(int v);
+        Board(const Board& b);
         ~Board();
         friend std::ostream& operator<<(std::ostream& os, Board const &b); 
         xo& operator[](coord c);
         Board& operator= (const char c);
+        Board& operator= (const Board &b);
 };
 
 

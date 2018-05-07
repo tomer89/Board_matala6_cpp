@@ -18,6 +18,13 @@ std::ostream& operator<<(std::ostream& os, xo  &c){
 //*************************************All board stuff*********************************************    
     
 //tooken from https://www.geeksforgeeks.org/create-dynamic-2d-array-inside-class-c/
+Board::Board()
+{
+	size = 0;
+	board = new xo* [size];
+
+}
+
 Board::Board(int v)
 {
 	size = v;
@@ -38,6 +45,20 @@ Board::~Board(){
     }
     delete board;
 }
+
+Board::Board(const Board& b){
+    size = b.size;
+	board = new xo* [size];
+
+	for (int i=0; i<size; i++)
+	{
+    	board[i] = new xo[size];
+    	for(int j = 0 ; j < size ; j++){
+    		board[i][j]= b.board[i][j];
+    	}
+	}
+}
+
 
 
 ostream& operator<<(std::ostream& os, Board const &b)
@@ -81,8 +102,6 @@ Board& Board::operator= (const char c)
             }
         }
     }
-    
-    
     //not sure I am suppose to support this
     else if(c == 'X' || c == 'O')
     {
@@ -94,10 +113,27 @@ Board& Board::operator= (const char c)
             }
         }
     }
-    
-    else{
+    else
+    {
         throw IllegalCharException(c);
     }
     
     return *this;
+}
+
+
+Board& Board::operator=(const Board& b)
+
+{
+   /* size = b.size;
+	board = new xo* [size];
+
+	for (int i=0; i<size; i++)
+	{
+    	board[i] = new xo[size];
+    	for(int j = 0 ; j < size ; j++){
+    		board[i][j]= b.board[i][j];
+    	}
+	}*/
+	return *this;
 }
