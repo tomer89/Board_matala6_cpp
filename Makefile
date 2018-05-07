@@ -1,14 +1,8 @@
-CXX=clang++
-CXXFLAGS=-g -std=c++11 -Wall -pedantic
-
-all: main.o Board.o
-     g++ -std=c++11 main.o Board.o -o hello
-     
-main.o: main.cpp
-	g++ -std=c++11 -c main.cpp
-    
-Board.o: Board.cpp Board.h
-	g++ -std=c++11 -c Board.cpp
-
-clean: 
-	rm *.o hello
+HEADERS = Board.h
+OBJECTS = main.o Board.o
+exe: $(OBJECTS)
+	g++ -std=c++11 $^ -o $@
+%.o: %.cpp $(HEADERS)
+	g++ -c -std=c++11 $< -o $@
+clean:
+	rm -i *.o exe
