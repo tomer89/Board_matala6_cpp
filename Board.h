@@ -70,7 +70,7 @@ class xo{
         }
         
         
-        operator char(){
+        operator char() const{
             return x;
         }
 };
