@@ -65,7 +65,7 @@ ostream& operator<<(std::ostream& os, Board const &b)
 {
     for(int i = 0 ; i < b.size ; i++){
         for(int j = 0 ; j < b.size ; j++){
-            os << b.board[i][j] << " ";
+            os << b.board[i][j] ;
         }
         os << endl;
     }
