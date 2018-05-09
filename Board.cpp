@@ -125,7 +125,7 @@ Board& Board::operator= (const char c)
 Board& Board::operator=(const Board& b)
 
 {
-   /* size = b.size;
+   size = b.size;
 	board = new xo* [size];
 
 	for (int i=0; i<size; i++)
@@ -134,6 +134,6 @@ Board& Board::operator=(const Board& b)
     	for(int j = 0 ; j < size ; j++){
     		board[i][j]= b.board[i][j];
     	}
-	}*/
+	}
 	return *this;
 }

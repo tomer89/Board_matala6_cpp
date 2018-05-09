@@ -17,6 +17,8 @@
 using namespace std;
 
 int main() {
+	
+	
 	Board board1{4};  // Initializes a 4x4 board
 	cout << board1 << endl;   /* Shows an empty board:
 	....
@@ -65,8 +67,21 @@ int main() {
 	cout << board2 << endl;  /* Shows a board with an X at top-left */
 	cout << board1 << endl;  /* Shows a board with an X at top-left and O at bottom-right */
 
-	cout << "Good bye!" << endl;
+	cout << "*******************************************!" << endl;
 
+
+	Board a{3};
+	a = '.';
+	a[{2,2}] = 'X';
+	cout << a << endl <<endl;
+	
+	Board b{4};
+	b = '.';
+	b[{2,2}] = 'X';
+	cout << b;
+	
+	b= a;
+	cout << b;
 	return 0;
 }
 
