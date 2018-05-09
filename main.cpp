@@ -1,8 +1,9 @@
 /**
- * My git: https://github.com/tomer89/Board_matala6_cpp.git
- * HW:	   https://github.com/erelsgl/ariel-cpp-5778/tree/master/week05-copy-friend/homework
- * https://ide.geeksforgeeks.org/index.php
- * g++ -std=c++0x main.cpp Board.cpp
+ * My git:			https://github.com/tomer89/Board_matala6_cpp.git
+ * HW:				https://github.com/erelsgl/ariel-cpp-5778/tree/master/week05-copy-friend/homework
+ * https:			//ide.geeksforgeeks.org/index.php
+ * For compiling:	g++ -std=c++0x main.cpp Board.cpp
+ * Auto checking:   http://31.154.73.178:8008/?backend=5678&exercise=EX6
  //*/ 
 
 
