@@ -5,6 +5,13 @@
 using namespace std;
     
     
+
+void freeBoard(xo** board,int size){
+    for(int i = 0 ; i < size ; i++){
+        delete board[i];
+    }
+}
+
     
     
 std::ostream& operator<<(std::ostream& os, xo  &c){
@@ -40,9 +47,7 @@ Board::Board(int v)
 }
 
 Board::~Board(){
-    for(int i = 0 ; i < size ; i++){
-        delete board[i];
-    }
+    freeBoard(board,size);
     delete board;
 }
 
@@ -125,7 +130,8 @@ Board& Board::operator= (const char c)
 Board& Board::operator=(const Board& b)
 
 {
-   size = b.size;
+    size = b.size;
+    freeBoard(board,size);
 	board = new xo* [size];
 
 	for (int i=0; i<size; i++)
@@ -137,3 +143,5 @@ Board& Board::operator=(const Board& b)
 	}
 	return *this;
 }
+
+
