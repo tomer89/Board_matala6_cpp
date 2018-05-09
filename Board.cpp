@@ -8,7 +8,7 @@ using namespace std;
 
 void freeBoard(xo** board,int size){
     for(int i = 0 ; i < size ; i++){
-        delete board[i];
+        delete[] board[i];
     }
 }
 
@@ -34,6 +34,7 @@ Board::Board()
 
 Board::Board(int v)
 {
+    //freeBoard(board,size);
 	size = v;
 	board = new xo* [size];
 
@@ -48,7 +49,7 @@ Board::Board(int v)
 
 Board::~Board(){
     freeBoard(board,size);
-    delete board;
+    delete[] board;
 }
 
 Board::Board(const Board& b){
@@ -130,8 +131,8 @@ Board& Board::operator= (const char c)
 Board& Board::operator=(const Board& b)
 
 {
-    size = b.size;
     freeBoard(board,size);
+    size = b.size;
 	board = new xo* [size];
 
 	for (int i=0; i<size; i++)
