@@ -4,6 +4,7 @@
  * https:			//ide.geeksforgeeks.org/index.php
  * For compiling:	g++ -std=c++0x main.cpp Board.cpp
  * Auto checking:   http://31.154.73.178:8008/?backend=5678&exercise=EX6
+ * course git:      https://github.com/erelsgl/ariel-cpp-5778
  //*/ 
 
 
@@ -19,68 +20,7 @@ using namespace std;
 
 
 
-/*
 
-class Board
-{
-	
-	struct coord
-	{
-	    int x;
-	    int y;
-	};
-	coord _coord;
-	char** board;
-	int size;
-	
-  public:
-	  
-	Board(int v);
-	~Board();
-    friend std::ostream& operator<<(std::ostream& os, Board const &b); 
-	char& operator[](coord c)
-	{
-	    return board[c.x][c.y];
-	}
-};
-
-
-
-
-Board::Board(int v)
-{
-	size = v;
-	board = new char* [size];
-
-	for (int i=0; i<size; i++)
-	{
-    	board[i] = new char[size];
-    	for(int j = 0 ; j < size ; j++){
-    		board[i][j] = '*';
-    	}
-	}
-}
-
-Board::~Board(){
-    for(int i = 0 ; i < size ; i++){
-        delete board[i];
-    }
-    delete board;
-}
-
-
-ostream& operator<<(std::ostream& os, Board const &b)
-{
-    for(int i = 0 ; i < b.size ; i++){
-        for(int j = 0 ; j < b.size ; j++){
-            cout << b.board[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << " "  << endl;
-    
-}
-*/
 
 
 int main() {
@@ -148,10 +88,75 @@ int main() {
 
 
 
+//stuff for personal use:
 
 
 
 
+
+
+/*
+
+class Board
+{
+	
+	struct coord
+	{
+	    int x;
+	    int y;
+	};
+	coord _coord;
+	char** board;
+	int size;
+	
+  public:
+	  
+	Board(int v);
+	~Board();
+    friend std::ostream& operator<<(std::ostream& os, Board const &b); 
+	char& operator[](coord c)
+	{
+	    return board[c.x][c.y];
+	}
+};
+
+
+
+
+Board::Board(int v)
+{
+	size = v;
+	board = new char* [size];
+
+	for (int i=0; i<size; i++)
+	{
+    	board[i] = new char[size];
+    	for(int j = 0 ; j < size ; j++){
+    		board[i][j] = '*';
+    	}
+	}
+}
+
+Board::~Board(){
+    for(int i = 0 ; i < size ; i++){
+        delete board[i];
+    }
+    delete board;
+}
+
+
+ostream& operator<<(std::ostream& os, Board const &b)
+{
+    for(int i = 0 ; i < b.size ; i++){
+        for(int j = 0 ; j < b.size ; j++){
+            cout << b.board[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << " "  << endl;
+    
+}
+*/
 
 
 

@@ -1,7 +1,7 @@
 HEADERS = Board.h
-OBJECTS = main.o Board.o
-exe: $(OBJECTS)
-	g++ -std=c++11 $^ -o $@
+OBJECTS = Board.o
+all: $(OBJECTS)
+
 %.o: %.cpp $(HEADERS)
 	g++ -c -std=c++11 $< -o $@
 clean:
