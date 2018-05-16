@@ -67,7 +67,7 @@ int main() {
 	cout << board2 << endl;  // Shows a board with an X at top-left 
 	cout << board1 << endl;  // Shows a board with an X at top-left and O at bottom-right 
 
-	cout << "*******************************************!" << endl;
+/*	cout << "*******************************************!" << endl;
 
 
 	Board a{3};
@@ -81,7 +81,7 @@ int main() {
 	cout << b;
 	
 	b= a;
-	cout << b;
+	cout << b;*/
 	return 0;
 }
 

@@ -94,19 +94,4 @@ class Board{
         Board& operator= (const Board &b);
 };
 
-
-/*
-class _map
-{
-    public:
-        //data being what you have in your board
-        _map& operator[] (struct coord) {
-            this;
-        }
-        void operator= (char enter) {
-            cout << enter;
-        }        
-        
-};*/
-
 #endif
