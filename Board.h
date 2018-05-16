@@ -9,8 +9,8 @@ using namespace std;
 
         
 struct coord {
-    int x;
-    int y;
+    uint x;
+    uint y;
 };
 
 
@@ -37,14 +37,14 @@ class IllegalCharException{
         }
 };
 
+
+
 class xo{
     char x;
     
     public:
         
-        char getChar() const{
-            return x;
-        }
+        char getChar() const{return x;}
         
         char& operator= (const char c){
             if(c == 'X' || c == 'O')
@@ -65,15 +65,15 @@ class xo{
         
         friend std::ostream& operator<<(std::ostream& os, xo  &b);
         
-        void clear(){
-            x = '.';
-        }
+        void clear(){x = '.';}
         
-        
-        operator char() const{
-            return x;
-        }
+        operator char() const{return x;}
 };
+
+
+
+
+
 
 class Board{
     
