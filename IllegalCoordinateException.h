@@ -1,13 +1,18 @@
-#ifndef CIRC_H
-#define CIRC_H
+#ifndef COORD_EXC
+#define COORD_EXC
 
 #include <iostream>
+#include "Board.h"
 using namespace std;
 
-class IllegalCoordinateException{
-    
-};
+struct Coordinate;
 
+class IllegalCoordinateException{
+    Coordinate* _coord;
+    public:
+        IllegalCoordinateException(Coordinate c);
+        std::string theCoordinate() const;
+};
 
 
 #endif

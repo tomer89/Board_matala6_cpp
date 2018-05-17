@@ -1,13 +1,25 @@
 #include <iostream>
 #include <vector>
 #include "Board.h"
-//#include <map>
 using namespace std;
-    
-    
 
-void freeBoard(xo** board,int size){
-    for(int i = 0 ; i < size ; i++){
+
+
+    char& xo::operator= (const char c){
+        if(c == 'X' || c == 'O')
+        {
+            x = c;
+        }
+        else
+        {
+            throw IllegalCharException(c);
+        }
+        return x;
+    }
+
+
+void freeBoard(xo** board,int _size){
+    for(int i = 0 ; i < _size ; i++){
         delete[] board[i];
     }
 }
@@ -17,7 +29,7 @@ void freeBoard(xo** board,int size){
 std::ostream& operator<<(std::ostream& os, xo  &c){
     os << c.getChar();
     return os;
-}    
+}
     
     
     
@@ -27,39 +39,39 @@ std::ostream& operator<<(std::ostream& os, xo  &c){
 //tooken from https://www.geeksforgeeks.org/create-dynamic-2d-array-inside-class-c/
 Board::Board()
 {
-	size = 0;
-	board = new xo* [size];
+	_size = 0;
+	board = new xo* [_size];
 
 }
 
 Board::Board(int v)
 {
-    //freeBoard(board,size);
-	size = v;
-	board = new xo* [size];
+    //freeBoard(board,_size);
+	_size = v;
+	board = new xo* [_size];
 
-	for (int i=0; i<size; i++)
+	for (int i=0; i<_size; i++)
 	{
-    	board[i] = new xo[size];
-    	for(int j = 0 ; j < size ; j++){
+    	board[i] = new xo[_size];
+    	for(int j = 0 ; j < _size ; j++){
     		board[i][j].clear();
     	}
 	}
 }
 
 Board::~Board(){
-    freeBoard(board,size);
+    freeBoard(board,_size);
     delete[] board;
 }
 
 Board::Board(const Board& b){
-    size = b.size;
-	board = new xo* [size];
+    _size = b._size;
+	board = new xo* [_size];
 
-	for (int i=0; i<size; i++)
+	for (int i=0; i<_size; i++)
 	{
-    	board[i] = new xo[size];
-    	for(int j = 0 ; j < size ; j++){
+    	board[i] = new xo[_size];
+    	for(int j = 0 ; j < _size ; j++){
     		board[i][j]= b.board[i][j];
     	}
 	}
@@ -69,8 +81,8 @@ Board::Board(const Board& b){
 
 ostream& operator<<(std::ostream& os, Board const &b)
 {
-    for(int i = 0 ; i < b.size ; i++){
-        for(int j = 0 ; j < b.size ; j++){
+    for(int i = 0 ; i < b._size ; i++){
+        for(int j = 0 ; j < b._size ; j++){
             os << b.board[i][j] ;
         }
         os << endl;
@@ -81,9 +93,9 @@ ostream& operator<<(std::ostream& os, Board const &b)
 
 
 
-xo& Board::operator[](coord c)
+xo& Board::operator[](const Coordinate c) const
 {
-    if(c.x < size && c.y < size)
+    if(c.x < _size && c.y < _size)
     {
         return board[c.x][c.y];
     }
@@ -100,9 +112,9 @@ Board& Board::operator= (const char c)
 {
     if(c == '.')
     {
-        for(int i = 0 ; i < size ; i++)
+        for(int i = 0 ; i < _size ; i++)
         {
-            for(int j = 0 ; j < size ; j++)
+            for(int j = 0 ; j < _size ; j++)
             {
                 board[i][j].clear();
             }
@@ -111,9 +123,9 @@ Board& Board::operator= (const char c)
     //not sure I am suppose to support this
     else if(c == 'X' || c == 'O')
     {
-        for(int i = 0 ; i < size ; i++)
+        for(int i = 0 ; i < _size ; i++)
         {
-            for(int j = 0 ; j < size ; j++)
+            for(int j = 0 ; j < _size ; j++)
             {
                 board[i][j] = c;
             }
@@ -131,14 +143,14 @@ Board& Board::operator= (const char c)
 Board& Board::operator=(const Board& b)
 
 {
-    freeBoard(board,size);
-    size = b.size;
-	board = new xo* [size];
+    freeBoard(board,_size);
+    _size = b._size;
+	board = new xo* [_size];
 
-	for (int i=0; i<size; i++)
+	for (int i=0; i<_size; i++)
 	{
-    	board[i] = new xo[size];
-    	for(int j = 0 ; j < size ; j++){
+    	board[i] = new xo[_size];
+    	for(int j = 0 ; j < _size ; j++){
     		board[i][j]= b.board[i][j];
     	}
 	}

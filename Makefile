@@ -1,4 +1,4 @@
-HEADERS = Board.h
+HEADERS = Board.h IllegalCoordinateException.h IllegalCharException.h
 OBJECTS = Board.o
 all: $(OBJECTS)
 
