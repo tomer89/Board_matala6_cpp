@@ -10,14 +10,13 @@
 using namespace std;
 
 
+
 class xo{
     char x;
     
     public:
         
-        char getChar() const{
-            return x;
-        }
+        char getChar() const{return x;}
         
         char& operator= (const char c);
         
@@ -28,18 +27,20 @@ class xo{
         
         friend std::ostream& operator<<(std::ostream& os, xo  &b);
         
-        void clear(){
-            x = '.';
-        }
-        
+        void clear(){x = '.';}
+
         bool operator== (const char _xo) const{
             return (x == _xo);
         }
         
-        operator char() const{
-            return x;
-        }
+
+        operator char() const{return x;}
 };
+
+
+
+
+
 
 class Board{
     
@@ -60,20 +61,5 @@ class Board{
         Board& operator= (const Board &b);
         int size() const {return _size;}
 };
-
-
-/*
-class _map
-{
-    public:
-        //data being what you have in your board
-        _map& operator[] (struct coord) {
-            this;
-        }
-        void operator= (char enter) {
-            cout << enter;
-        }        
-        
-};*/
 
 #endif
