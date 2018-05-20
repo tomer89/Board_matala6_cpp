@@ -1,5 +1,4 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 
 #include <iostream>
@@ -11,12 +10,13 @@ using namespace std;
 
 class Player{
     //private:
-        
+    private:
+        char _c;
     public:
         char myChar;
+        char setChar(char c){_c = c;}
+        char getChar() {return _c;}
         virtual const string name() const = 0;
     	virtual const Coordinate play(const Board& board) = 0;
 };
 
-
-#endif

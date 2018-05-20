@@ -1,9 +1,8 @@
-
-#ifndef CIRC_H
-#define CIRC_H
+#pragma once
 
 #include "IllegalCoordinateException.h"
 #include "IllegalCharException.h"
+
 #include "coordinate.h"
 #include <iostream>
 #include <string>
@@ -61,5 +60,3 @@ class Board{
         Board& operator= (const Board &b);
         int size() const {return _size;}
 };
-
-#endif

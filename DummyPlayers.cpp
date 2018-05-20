@@ -18,6 +18,7 @@ const Coordinate YXPlayer::play(const Board& board) {
 		for (uint x=0; x<board.size(); ++x) {
 			Coordinate c{x,y};
 			if (board[c]=='.') {
+//std::cout << "inside YXPlayer " <<x << "," << y << "is" << board[c] << std::endl;
 				return c;
 			}
 		}

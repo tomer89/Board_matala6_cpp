@@ -1,11 +1,20 @@
-#ifndef CHAR_EXC
-#define CHAR_EXC
+#pragma once
 
 #include <iostream>
 #include "Board.h"
 using namespace std;
 
+
+
+
 struct Coordinate;
+
+class IllegalCoordinateException{
+    Coordinate* _coord;
+    public:
+        IllegalCoordinateException(Coordinate c);
+        std::string theCoordinate() const;
+};
 
 
 /**
@@ -26,4 +35,10 @@ class IllegalCharException{
 
 
 
-#endif
+//this is a small class that will only apply for the play
+class IllegalPlay{
+    public:
+        IllegalPlay(){
+        }
+
+};
