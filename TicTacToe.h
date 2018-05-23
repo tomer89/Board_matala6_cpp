@@ -13,7 +13,7 @@
 class TicTacToe{
     
     private:
-        int _size;
+        int _size , _moves;
         Board _board;
         Player* _xPlayer,*_oPlayer;
         Player* _winner;
@@ -23,7 +23,7 @@ class TicTacToe{
         
     
     public:
-        TicTacToe(int size):_size(size), _board(size){}
+        TicTacToe(int size):_size(size), _board(size),_moves(0){}
         void play(Player& a,Player& b);
         Board board() const;
         Player& winner() const;

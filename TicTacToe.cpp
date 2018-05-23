@@ -37,6 +37,7 @@ void TicTacToe::play(Player& xPlayer,Player& oPlayer){
             {
                 try{
                     _board[x_move] = xPlayer.getChar();
+                    _moves++;
                 }
                 catch(IllegalCharException e){
                     setWinner(oPlayer);
@@ -57,6 +58,10 @@ void TicTacToe::play(Player& xPlayer,Player& oPlayer){
         if(playing){
             try{
                 o_move = oPlayer.play(_board);
+                _moves++;
+                if(_moves == (2*_size)){
+                    
+                }
             }
             catch (string& s) {
                 setWinner(xPlayer);
@@ -87,6 +92,7 @@ void TicTacToe::play(Player& xPlayer,Player& oPlayer){
             playing = !finished(o_move, oPlayer);
         }
     }
+    
 }
 
 Board TicTacToe::board() const{return _board;}
