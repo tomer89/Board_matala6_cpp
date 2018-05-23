@@ -47,7 +47,7 @@ class Board{
         
         Coordinate _coord;
     	xo** board;
-    	int _size;
+    	uint _size;
 	
     public:
         Board();
@@ -58,5 +58,5 @@ class Board{
         xo& operator[](const Coordinate c) const;
         Board& operator= (const char c);
         Board& operator= (const Board &b);
-        int size() const {return _size;}
+        uint size() const {return _size;}
 };

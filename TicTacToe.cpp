@@ -11,6 +11,8 @@ using namespace std;
 
 
 void TicTacToe::play(Player& xPlayer,Player& oPlayer){
+    
+    //cout << "\n !!!!!!!!!!!!!!!!!! \n" ;
     _board = '.';
     
     bool playing= true;
@@ -23,6 +25,8 @@ void TicTacToe::play(Player& xPlayer,Player& oPlayer){
     while(playing){
         try{
             x_move = xPlayer.play(_board);
+            //cout << "[{" << x_move.x << "," << x_move.y << "}]\n";
+            //cout << _board;
         }
         catch (string& s) {
             setWinner(oPlayer);
@@ -93,7 +97,80 @@ Player& TicTacToe::winner() const{
 
 void TicTacToe::setWinner(Player& p){ _winner = &p;}
 
+
 bool TicTacToe::finished(Coordinate coord, Player& p){
+    
+    char player = _board[coord];
+    int counter = 0;
+    uint x = coord.x;
+    uint y = coord.y;
+    bool stop = false;
+    
+    //checking row
+    for(uint col = 0 ; col < _size && !stop; col++){
+        if(_board[{x,col}] == player){
+            counter++;
+        }
+        else{
+            stop = true;
+        }
+    }
+    if(counter == _size){
+        _winner = &p;
+        return true;
+    }
+    else{
+        stop = false;
+        counter = 0;
+    }
+    
+    //checking column
+    for(uint rows = 0 ; rows < _size && !stop; rows++){
+        if(_board[{rows,y}] == player){
+            counter++;
+        }
+        else{
+            stop = true;
+        }
+    }
+    if(counter == _size){
+        _winner = &p;
+        return true;
+    }
+    else{
+        stop = false;
+        counter = 0;
+    }
+    
+    
+    //check not_main_diag
+    if(x + y + 1 == _size){
+        for(uint rows = 0 ; rows < _size && !stop ; rows++){
+            uint yy = _size - (1+rows);
+            if(_board[{rows , yy}] == player){
+                //cout << "\n got here " << "{[" << rows << "," << col <<"}]" << endl;
+                counter++;
+            }
+            else{
+                stop = true;
+            }
+        }
+        
+        if(counter == _size){
+            _winner = &p;
+            return true;
+        }
+        else{
+            stop = false;
+            counter = 0;
+        }
+    }
+    
+    
+    return false;
+}
+
+/*bool TicTacToe::finished(Coordinate coord, Player& p){
     bool stop = false;
     char player = _board[coord];
     Coordinate c_checking;
@@ -141,6 +218,26 @@ bool TicTacToe::finished(Coordinate coord, Player& p){
             }
         }
     }
+    else if((x + y) == (_board.size() - 1)){
+        cout << "got here2222\n";
+        for(uint rows = 0 ; rows <_board.size() ; rows++){
+            
+            if(_board[{rows,rows + _board.size() - (1 + rows)}] != player){
+               
+                stop = true;
+            }
+            else{
+                 cout << "\n got here " << "{[" << rows << "," << _board.size() - (1+rows) <<"}]" << endl;
+            }
+            
+        }
+        
+        if(!stop)
+        {
+            _winner = &p;
+            return true;
+        }
+    }
     
     
     if(!stop)
@@ -149,7 +246,7 @@ bool TicTacToe::finished(Coordinate coord, Player& p){
         return true;
     }
     return false;
-}
+}*/
 
 
 bool TicTacToe::legalMove(const Coordinate coord , Player &p){

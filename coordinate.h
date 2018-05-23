@@ -7,7 +7,7 @@ struct Coordinate {
     uint x;
     uint y;
     
-    friend std::ostream& operator<<(std::ostream& os, Coordinate const &c); 
+    friend std::ostream& operator<<(std::ostream& os, Coordinate const &c);
 };
 
 
