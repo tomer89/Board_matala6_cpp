@@ -47,7 +47,7 @@ const Coordinate Champion::play(const Board& board) {
 
 
 
-/*
+
 int Champion::checkRowsCol(const Board& b, char c,int rowCol)
 {
     char otherP;
@@ -117,4 +117,4 @@ Coordinate Champion::block(const Board& b, uint index, int rowCol) const{
             }
         }
     }
-}*/
+}
