@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "Board.h"
 using namespace std;
@@ -99,7 +100,6 @@ ostream& operator<<(std::ostream& os, Board const &b)
 istream& operator>>(std::istream& input, Board &b)
 {
     //b.~Board();
-    cout << "Working here - tomer\n";
     string line;
     input >> line;
     Board tmpBoard(line.size());
@@ -117,19 +117,6 @@ istream& operator>>(std::istream& input, Board &b)
         }
     }
     cout << tmpBoard;
-    //cout << unparsed << next;
-/*	string line;
-	ifstream nameFileout;
-	
-	while (nameFileout >> line)
-	{
-	    //cout << item_name;
-        for(char& c : str) {
-            do_things_with(c);
-        }
-	    cout << endl;
-	}
-	nameFileout.close();*/
     return input;
     
 }
@@ -201,5 +188,16 @@ Board& Board::operator=(const Board& b)
 
 
 string Board::draw(int edge){
-    return "a";
+    string filename = getFileName();
+    //https://github.com/erelsgl/ariel-cpp-5778/tree/3dad1e8994aceee18cdb34ea030cb4cb6cf2417e/week07-diamond-rtti/5-image
+    ofstream imageFile("filename.ppm", ios::out | ios::binary);
+    return filename;
+}
+
+
+
+string Board::getFileName(){
+    static int i = -1;
+    i++;
+    return "boardoutput"+to_string(i)+".ppm";    
 }

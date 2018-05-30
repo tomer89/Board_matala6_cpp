@@ -28,5 +28,7 @@ int main() {
 	Board board;
 	cin >> board;
 	string filename = board.draw(600);
-	//cout << filename << endl;*/
+	string filename2 = board.draw(600);
+	cout << filename << endl;
+	cout << filename2 << endl;
 }

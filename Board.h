@@ -61,5 +61,6 @@ class Board{
         Board& operator= (const Board &b);
         uint size() const {return _size;}
         string draw(int edge);
+        string getFileName();
         
 };
