@@ -54,9 +54,12 @@ class Board{
         Board(int v);
         Board(const Board& b);
         ~Board();
-        friend std::ostream& operator<<(std::ostream& os, Board const &b); 
+        friend std::ostream& operator<<(std::ostream& os, Board const &b);
+        friend std::istream& operator>>(std::istream& os, Board &b);
         xo& operator[](const Coordinate c) const;
         Board& operator= (const char c);
         Board& operator= (const Board &b);
         uint size() const {return _size;}
+        string draw(int edge);
+        
 };

@@ -96,6 +96,43 @@ ostream& operator<<(std::ostream& os, Board const &b)
     
 }
 
+istream& operator>>(std::istream& input, Board &b)
+{
+    //b.~Board();
+    cout << "Working here - tomer\n";
+    string line;
+    input >> line;
+    Board tmpBoard(line.size());
+    int col = 0;
+    for(char& c : line) {
+        tmpBoard.board[0][col] = c;
+        col++;
+    }
+    for(int row = 1; row < tmpBoard.size() ; row++){
+        input >> line;
+        col = 0 ;
+        for(char& c : line) {
+            tmpBoard.board[row][col] = c;
+            col++;
+        }
+    }
+    cout << tmpBoard;
+    //cout << unparsed << next;
+/*	string line;
+	ifstream nameFileout;
+	
+	while (nameFileout >> line)
+	{
+	    //cout << item_name;
+        for(char& c : str) {
+            do_things_with(c);
+        }
+	    cout << endl;
+	}
+	nameFileout.close();*/
+    return input;
+    
+}
 
 
 xo& Board::operator[](const Coordinate c) const
@@ -160,4 +197,9 @@ Board& Board::operator=(const Board& b)
     	}
 	}
 	return *this;
+}
+
+
+string Board::draw(int edge){
+    return "a";
 }
