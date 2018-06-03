@@ -6,7 +6,7 @@
  * For compiling:	g++ -std=c++0x main.cpp Board.cpp IllegalCoordinateException.cpp TicTacToe.cpp DummyPlayers.cpp Champion.cpp
  * Auto checking6:  http://31.154.73.178:8008/?backend=5678&exercise=EX6
  * course git:      https://github.com/erelsgl/ariel-cpp-5778
- * 
+ * ppm online:      http://paulcuth.me.uk/netpbm-viewer/
  * Polymorphizm
  //*/ 
 

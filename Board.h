@@ -67,5 +67,5 @@ class Board{
         uint size() const {return _size;}
         string draw(uint edge);
         string getFileName();
-        
+        bool DoesFileExist (const std::string& name);
 };

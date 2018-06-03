@@ -7,7 +7,7 @@ using namespace std;
 
 
     char& xo::operator= (const char c){
-        if(c == 'X' || c == 'O')
+        if(c == 'X' || c == 'O' || c == '.')
         {
             x = c;
         }
@@ -171,7 +171,6 @@ Board& Board::operator= (const char c)
 
 
 Board& Board::operator=(const Board& b)
-
 {
     freeBoard(board,_size);
     _size = b._size;
@@ -191,20 +190,28 @@ Board& Board::operator=(const Board& b)
 string Board::draw(uint edge){
     string filename = getFileName();
     //https://github.com/erelsgl/ariel-cpp-5778/tree/3dad1e8994aceee18cdb34ea030cb4cb6cf2417e/week07-diamond-rtti/5-image
+
+    pix board_image[edge*edge];
+    while(std::ifstream(filename)){
+        cout << filename << endl;
+        filename = getFileName();
+    }
     ofstream imageFile(filename, ios::out | ios::binary);
     imageFile << "P6" << endl << edge <<" " << edge << endl << 255 << endl;
-    pix board_image[edge*edge];
-    int box = edge/size();
+    //int box = edge/size();
     for(uint row = 0 ;row < size() ; row++){
         for(uint col = 0 ;col < size() ; col++){
-          board_image[edge*col+row].red = (row % 256);
-          board_image[edge*col+row].green = (col % 256);
-          board_image[edge*col+row].blue = ( (row*col+col*col) % 256);
+          board_image[edge*row+col].red = (col % 256);
+          board_image[edge*row+col].green = (row % 256);
+          board_image[edge*row+col].blue = ( (row*row+col*col) % 256);
         }
     }
-    
+    board_image[0].red = 255;
+    board_image[0].blue = 0;
+    board_image[0].green = 0;
     imageFile.write(reinterpret_cast<char*>(&board_image), 3*edge*edge);
     imageFile.close();
+    
     
     return filename;
 }
@@ -215,4 +222,14 @@ string Board::getFileName(){
     static int i = -1;
     i++;
     return "boardoutput"+to_string(i)+".ppm";    
+}
+
+
+
+bool Board::DoesFileExist (const std::string& name) {
+    cout << name << endl;
+    
+    ifstream f("boardoutput0.ppm");
+    cout << f.good() << endl;
+    return f.good();
 }
