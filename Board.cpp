@@ -117,6 +117,7 @@ istream& operator>>(std::istream& input, Board &b)
         }
     }
     cout << tmpBoard;
+    b = tmpBoard;
     return input;
     
 }
@@ -187,10 +188,24 @@ Board& Board::operator=(const Board& b)
 }
 
 
-string Board::draw(int edge){
+string Board::draw(uint edge){
     string filename = getFileName();
     //https://github.com/erelsgl/ariel-cpp-5778/tree/3dad1e8994aceee18cdb34ea030cb4cb6cf2417e/week07-diamond-rtti/5-image
-    ofstream imageFile("filename.ppm", ios::out | ios::binary);
+    ofstream imageFile(filename, ios::out | ios::binary);
+    imageFile << "P6" << endl << edge <<" " << edge << endl << 255 << endl;
+    pix board_image[edge*edge];
+    int box = edge/size();
+    for(uint row = 0 ;row < size() ; row++){
+        for(uint col = 0 ;col < size() ; col++){
+          board_image[edge*col+row].red = (row % 256);
+          board_image[edge*col+row].green = (col % 256);
+          board_image[edge*col+row].blue = ( (row*col+col*col) % 256);
+        }
+    }
+    
+    imageFile.write(reinterpret_cast<char*>(&board_image), 3*edge*edge);
+    imageFile.close();
+    
     return filename;
 }
 

@@ -36,7 +36,12 @@ class xo{
         operator char() const{return x;}
 };
 
-
+struct pix {
+  uint8_t red, green, blue;
+public:
+  pix() {red = 0; green = 0 ; blue = 0;}
+  pix(uint8_t red, uint8_t green, uint8_t blue): red(red), green(green), blue(blue) {}
+};
 
 
 
@@ -60,7 +65,7 @@ class Board{
         Board& operator= (const char c);
         Board& operator= (const Board &b);
         uint size() const {return _size;}
-        string draw(int edge);
+        string draw(uint edge);
         string getFileName();
         
 };
