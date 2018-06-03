@@ -193,7 +193,6 @@ string Board::draw(uint edge){
 
     pix board_image[edge*edge];
     while(std::ifstream(filename)){
-        cout << filename << endl;
         filename = getFileName();
     }
     ofstream imageFile(filename, ios::out | ios::binary);
