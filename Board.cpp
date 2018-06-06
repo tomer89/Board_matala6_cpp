@@ -341,7 +341,7 @@ istream& operator>>(std::istream& input, Board &b)
     Board tmpBoard(line.size());
     int col = 0;
     for(char& c : line) {
-        cout << "char is: " << c << endl;
+        //cout << "char is: " << c << endl;
         tmpBoard.board[0][col] = c;
         col++;
     }
@@ -353,7 +353,7 @@ istream& operator>>(std::istream& input, Board &b)
             col++;
         }
     }
-    cout << tmpBoard;
+    //cout << tmpBoard;
     b = tmpBoard;
     return input;
     
