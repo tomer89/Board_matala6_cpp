@@ -428,7 +428,13 @@ Board& Board::operator=(const Board& b)
 string Board::draw(uint edge){
     string filename = getFileName();
     //https://github.com/erelsgl/ariel-cpp-5778/tree/3dad1e8994aceee18cdb34ea030cb4cb6cf2417e/week07-diamond-rtti/5-image
+    
+    while(std::ifstream(filename)){
+        filename = getFileName();
+    }
+    
     ofstream imageFile(filename, ios::out | ios::binary);
+
     imageFile << "P6" << endl << edge <<" " << edge << endl << 255 << endl;
     pix board_image[edge*edge];
     int box = edge/size();
